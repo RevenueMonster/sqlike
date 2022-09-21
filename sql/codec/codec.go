@@ -3,7 +3,7 @@ package codec
 import (
 	"reflect"
 
-	"github.com/si3nloong/sqlike/reflext"
+	"github.com/RevenueMonster/sqlike/reflext"
 )
 
 // ValueDecoder :

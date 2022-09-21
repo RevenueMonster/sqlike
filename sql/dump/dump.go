@@ -11,13 +11,13 @@ import (
 	"sync"
 	"time"
 
-	"github.com/si3nloong/sqlike/sql/driver"
-	"github.com/si3nloong/sqlike/sqlike/actions"
-	"github.com/si3nloong/sqlike/types"
-	"github.com/si3nloong/sqlike/util"
+	"github.com/RevenueMonster/sqlike/sql/driver"
+	"github.com/RevenueMonster/sqlike/sqlike/actions"
+	"github.com/RevenueMonster/sqlike/types"
+	"github.com/RevenueMonster/sqlike/util"
 
-	"github.com/si3nloong/sqlike/sql/dialect"
-	sqlstmt "github.com/si3nloong/sqlike/sql/stmt"
+	"github.com/RevenueMonster/sqlike/sql/dialect"
+	sqlstmt "github.com/RevenueMonster/sqlike/sql/stmt"
 )
 
 // Column :
@@ -144,7 +144,7 @@ func (d *Dumper) BackupTo(ctx context.Context, query interface{}, wr io.Writer) 
 # ************************************************************
 # Sqlike Dumper
 #
-# https://github.com/si3nloong/sqlike
+# https://github.com/RevenueMonster/sqlike
 #
 `)
 	w.WriteString("# Driver: " + d.driver + "\n")

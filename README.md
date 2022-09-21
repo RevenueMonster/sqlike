@@ -1,10 +1,10 @@
 # sqlike
 
-[![Build](https://github.com/si3nloong/sqlike/workflows/build/badge.svg?branch=main)](https://github.com/si3nloong/sqlike/actions?query=workflow%3Abuild)
-[![Release](https://img.shields.io/github/v/tag/si3nloong/sqlike)](https://github.com/si3nloong/sqlike/releases)
-[![Go Report](https://goreportcard.com/badge/github.com/si3nloong/sqlike)](https://goreportcard.com/report/github.com/si3nloong/sqlike)
+[![Build](https://github.com/RevenueMonster/sqlike/workflows/build/badge.svg?branch=main)](https://github.com/RevenueMonster/sqlike/actions?query=workflow%3Abuild)
+[![Release](https://img.shields.io/github/v/tag/si3nloong/sqlike)](https://github.com/RevenueMonster/sqlike/releases)
+[![Go Report](https://goreportcard.com/badge/github.com/RevenueMonster/sqlike)](https://goreportcard.com/report/github.com/RevenueMonster/sqlike)
 [![Go Coverage](https://codecov.io/gh/si3nloong/sqlike/branch/main/graph/badge.svg)](https://codecov.io/gh/si3nloong/sqlike)
-[![LICENSE](https://img.shields.io/github/license/si3nloong/sqlike)](https://github.com/si3nloong/sqlike/blob/main/LICENSE)
+[![LICENSE](https://img.shields.io/github/license/si3nloong/sqlike)](https://github.com/RevenueMonster/sqlike/blob/main/LICENSE)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fsi3nloong%2Fsqlike.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fsi3nloong%2Fsqlike?ref=badge_shield)
 
 > A Golang SQL ORM which anti-toxic query and focus on the latest features.
@@ -12,7 +12,7 @@
 ## 🔨 Installation
 
 ```console
-go get github.com/si3nloong/sqlike
+go get github.com/RevenueMonster/sqlike
 ```
 
 Fully compatible with native library `database/sql`, which mean you are allow to use `driver.Valuer` and `sql.Scanner`.
@@ -52,7 +52,7 @@ SQLike did support **mysql 5.7** as well. For better compatibility, we suggest y
 - Developer friendly, (query is highly similar to native sql query)
 - Support `sqldump` for backup purpose **(experiment)**
 
-<!-- You can refer to [examples](https://github.com/si3nloong/sqlike/tree/main/examples) folder to see what apis we offer and learn how to use those apis -->
+<!-- You can refer to [examples](https://github.com/RevenueMonster/sqlike/tree/main/examples) folder to see what apis we offer and learn how to use those apis -->
 
 ## ⚠️ Limitation
 
@@ -72,10 +72,10 @@ package main
 
 import (
     "time"
-    "github.com/si3nloong/sqlike/sqlike/actions"
-    "github.com/si3nloong/sqlike/sqlike"
-    "github.com/si3nloong/sqlike/sqlike/options"
-    "github.com/si3nloong/sqlike/sql/expr"
+    "github.com/RevenueMonster/sqlike/sqlike/actions"
+    "github.com/RevenueMonster/sqlike/sqlike"
+    "github.com/RevenueMonster/sqlike/sqlike/options"
+    "github.com/RevenueMonster/sqlike/sql/expr"
     "github.com/google/uuid"
     "context"
 
@@ -278,7 +278,7 @@ width="120px" style="margin-right: 10px" />
 
 ## 📄 License
 
-[MIT](https://github.com/si3nloong/sqlike/blob/main/LICENSE)
+[MIT](https://github.com/RevenueMonster/sqlike/blob/main/LICENSE)
 
 Copyright (c) 2019-present, SianLoong Lee
 

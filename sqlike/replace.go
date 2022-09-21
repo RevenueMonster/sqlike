@@ -5,8 +5,8 @@ import (
 	"database/sql"
 	"reflect"
 
-	"github.com/si3nloong/sqlike/reflext"
-	"github.com/si3nloong/sqlike/sqlike/options"
+	"github.com/RevenueMonster/sqlike/reflext"
+	"github.com/RevenueMonster/sqlike/sqlike/options"
 )
 
 // ReplaceOne :

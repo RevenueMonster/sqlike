@@ -11,12 +11,12 @@ import (
 	"strings"
 	"time"
 
+	"github.com/RevenueMonster/sqlike/reflext"
+	"github.com/RevenueMonster/sqlike/spatial"
 	"github.com/paulmach/orb"
 	"github.com/paulmach/orb/encoding/wkt"
-	"github.com/si3nloong/sqlike/reflext"
-	"github.com/si3nloong/sqlike/spatial"
 
-	"github.com/si3nloong/sqlike/jsonb"
+	"github.com/RevenueMonster/sqlike/jsonb"
 )
 
 // DefaultEncoders :

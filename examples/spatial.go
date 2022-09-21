@@ -5,13 +5,13 @@ import (
 	"database/sql"
 	"testing"
 
+	"github.com/RevenueMonster/sqlike/sql/expr"
+	"github.com/RevenueMonster/sqlike/sqlike"
+	"github.com/RevenueMonster/sqlike/sqlike/actions"
+	"github.com/RevenueMonster/sqlike/sqlike/indexes"
+	"github.com/RevenueMonster/sqlike/sqlike/options"
 	"github.com/paulmach/orb"
 	"github.com/paulmach/orb/encoding/wkb"
-	"github.com/si3nloong/sqlike/sql/expr"
-	"github.com/si3nloong/sqlike/sqlike"
-	"github.com/si3nloong/sqlike/sqlike/actions"
-	"github.com/si3nloong/sqlike/sqlike/indexes"
-	"github.com/si3nloong/sqlike/sqlike/options"
 	"github.com/stretchr/testify/require"
 )
 

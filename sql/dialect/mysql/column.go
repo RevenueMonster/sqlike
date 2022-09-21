@@ -1,6 +1,6 @@
 package mysql
 
-import sqlstmt "github.com/si3nloong/sqlike/sql/stmt"
+import sqlstmt "github.com/RevenueMonster/sqlike/sql/stmt"
 
 // GetColumns :
 func (ms *MySQL) GetColumns(stmt sqlstmt.Stmt, dbName, table string) {

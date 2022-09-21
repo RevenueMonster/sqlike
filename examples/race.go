@@ -6,7 +6,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/si3nloong/sqlike/sql/codec"
+	"github.com/RevenueMonster/sqlike/sql/codec"
 )
 
 func testRace(ctx context.Context, t *testing.T) {

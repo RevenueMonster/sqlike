@@ -1,8 +1,8 @@
 package actions
 
 import (
-	"github.com/si3nloong/sqlike/sql/expr"
-	"github.com/si3nloong/sqlike/sqlike/primitive"
+	"github.com/RevenueMonster/sqlike/sql/expr"
+	"github.com/RevenueMonster/sqlike/sqlike/primitive"
 )
 
 // UpdateStatement :

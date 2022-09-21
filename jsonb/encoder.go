@@ -11,7 +11,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/si3nloong/sqlike/reflext"
+	"github.com/RevenueMonster/sqlike/reflext"
 )
 
 // DefaultEncoder :

@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
+	"github.com/RevenueMonster/sqlike/types"
 	"github.com/google/uuid"
-	"github.com/si3nloong/sqlike/types"
 	"github.com/stretchr/testify/require"
 	"github.com/tidwall/sjson"
 	"golang.org/x/text/language"

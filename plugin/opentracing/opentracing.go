@@ -3,9 +3,9 @@ package opentracing
 import (
 	"context"
 
+	"github.com/RevenueMonster/sqlike/sql/instrumented"
 	"github.com/opentracing/opentracing-go"
 	"github.com/opentracing/opentracing-go/ext"
-	"github.com/si3nloong/sqlike/sql/instrumented"
 )
 
 // TraceOptions :

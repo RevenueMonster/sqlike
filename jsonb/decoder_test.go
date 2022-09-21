@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/si3nloong/sqlike/reflext"
+	"github.com/RevenueMonster/sqlike/reflext"
 	"github.com/stretchr/testify/require"
 	"golang.org/x/text/currency"
 	"golang.org/x/text/language"

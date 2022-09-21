@@ -10,9 +10,9 @@ import (
 	"time"
 
 	"cloud.google.com/go/civil"
+	"github.com/RevenueMonster/sqlike/reflext"
+	"github.com/RevenueMonster/sqlike/spatial"
 	"github.com/paulmach/orb"
-	"github.com/si3nloong/sqlike/reflext"
-	"github.com/si3nloong/sqlike/spatial"
 	"golang.org/x/text/currency"
 	"golang.org/x/text/language"
 )

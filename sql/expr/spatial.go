@@ -1,10 +1,10 @@
 package expr
 
 import (
+	"github.com/RevenueMonster/sqlike/spatial"
+	"github.com/RevenueMonster/sqlike/sqlike/primitive"
 	"github.com/paulmach/orb"
 	"github.com/paulmach/orb/encoding/wkt"
-	"github.com/si3nloong/sqlike/spatial"
-	"github.com/si3nloong/sqlike/sqlike/primitive"
 )
 
 //golint:ignore

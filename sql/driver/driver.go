@@ -4,9 +4,9 @@ import (
 	"context"
 	"database/sql"
 
-	"github.com/si3nloong/sqlike/sql/charset"
-	sqlstmt "github.com/si3nloong/sqlike/sql/stmt"
-	"github.com/si3nloong/sqlike/sqlike/logs"
+	"github.com/RevenueMonster/sqlike/sql/charset"
+	sqlstmt "github.com/RevenueMonster/sqlike/sql/stmt"
+	"github.com/RevenueMonster/sqlike/sqlike/logs"
 )
 
 // Info :

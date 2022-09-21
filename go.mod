@@ -1,6 +1,6 @@
-module github.com/si3nloong/sqlike
+module github.com/RevenueMonster/sqlike
 
-go 1.18
+go 1.17
 
 require (
 	cloud.google.com/go v0.103.0

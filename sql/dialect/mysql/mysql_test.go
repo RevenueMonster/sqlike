@@ -3,7 +3,7 @@ package mysql
 import (
 	"testing"
 
-	sqlstmt "github.com/si3nloong/sqlike/sql/stmt"
+	sqlstmt "github.com/RevenueMonster/sqlike/sql/stmt"
 	"github.com/stretchr/testify/require"
 )
 

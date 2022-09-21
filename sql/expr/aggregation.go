@@ -1,7 +1,7 @@
 package expr
 
 import (
-	"github.com/si3nloong/sqlike/sqlike/primitive"
+	"github.com/RevenueMonster/sqlike/sqlike/primitive"
 )
 
 // Sum :

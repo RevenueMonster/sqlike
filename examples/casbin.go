@@ -4,11 +4,11 @@ import (
 	"context"
 	"testing"
 
+	plugin "github.com/RevenueMonster/sqlike/plugin/casbin"
+	"github.com/RevenueMonster/sqlike/sql/expr"
+	"github.com/RevenueMonster/sqlike/sqlike"
 	"github.com/casbin/casbin/v2"
 	"github.com/casbin/casbin/v2/persist"
-	plugin "github.com/si3nloong/sqlike/plugin/casbin"
-	"github.com/si3nloong/sqlike/sql/expr"
-	"github.com/si3nloong/sqlike/sqlike"
 	"github.com/stretchr/testify/require"
 )
 

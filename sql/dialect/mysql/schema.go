@@ -5,14 +5,14 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/si3nloong/sqlike/reflext"
-	"github.com/si3nloong/sqlike/sql/charset"
-	"github.com/si3nloong/sqlike/sql/schema"
-	sqlstmt "github.com/si3nloong/sqlike/sql/stmt"
-	sqltype "github.com/si3nloong/sqlike/sql/type"
-	sqlutil "github.com/si3nloong/sqlike/sql/util"
-	"github.com/si3nloong/sqlike/sqlike/columns"
-	"github.com/si3nloong/sqlike/util"
+	"github.com/RevenueMonster/sqlike/reflext"
+	"github.com/RevenueMonster/sqlike/sql/charset"
+	"github.com/RevenueMonster/sqlike/sql/schema"
+	sqlstmt "github.com/RevenueMonster/sqlike/sql/stmt"
+	sqltype "github.com/RevenueMonster/sqlike/sql/type"
+	sqlutil "github.com/RevenueMonster/sqlike/sql/util"
+	"github.com/RevenueMonster/sqlike/sqlike/columns"
+	"github.com/RevenueMonster/sqlike/util"
 	"golang.org/x/text/currency"
 )
 

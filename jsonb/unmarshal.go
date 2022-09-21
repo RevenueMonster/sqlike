@@ -9,7 +9,7 @@ import (
 
 	"errors"
 
-	"github.com/si3nloong/sqlike/reflext"
+	"github.com/RevenueMonster/sqlike/reflext"
 )
 
 // Unmarshaler :

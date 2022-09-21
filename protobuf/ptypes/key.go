@@ -1,8 +1,8 @@
 package ptypes
 
 import (
-	pb "github.com/si3nloong/sqlike/protobuf"
-	"github.com/si3nloong/sqlike/types"
+	pb "github.com/RevenueMonster/sqlike/protobuf"
+	"github.com/RevenueMonster/sqlike/types"
 )
 
 func Key(k *pb.Key) (*types.Key, error) {

@@ -6,14 +6,14 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/si3nloong/sqlike/reflext"
-	"github.com/si3nloong/sqlike/sql"
+	"github.com/RevenueMonster/sqlike/reflext"
+	"github.com/RevenueMonster/sqlike/sql"
 
-	"github.com/si3nloong/sqlike/sql/codec"
-	"github.com/si3nloong/sqlike/sql/dialect"
-	sqldriver "github.com/si3nloong/sqlike/sql/driver"
-	sqlstmt "github.com/si3nloong/sqlike/sql/stmt"
-	"github.com/si3nloong/sqlike/sqlike/logs"
+	"github.com/RevenueMonster/sqlike/sql/codec"
+	"github.com/RevenueMonster/sqlike/sql/dialect"
+	sqldriver "github.com/RevenueMonster/sqlike/sql/driver"
+	sqlstmt "github.com/RevenueMonster/sqlike/sql/stmt"
+	"github.com/RevenueMonster/sqlike/sqlike/logs"
 )
 
 // ErrNoRecordAffected :

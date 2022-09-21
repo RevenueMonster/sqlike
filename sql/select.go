@@ -3,9 +3,9 @@ package sql
 import (
 	"reflect"
 
-	"github.com/si3nloong/sqlike/reflext"
-	"github.com/si3nloong/sqlike/sql/expr"
-	"github.com/si3nloong/sqlike/sqlike/primitive"
+	"github.com/RevenueMonster/sqlike/reflext"
+	"github.com/RevenueMonster/sqlike/sql/expr"
+	"github.com/RevenueMonster/sqlike/sqlike/primitive"
 )
 
 // SelectStmt :

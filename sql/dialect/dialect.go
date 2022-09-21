@@ -5,15 +5,15 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/si3nloong/sqlike/reflext"
-	"github.com/si3nloong/sqlike/sql"
-	"github.com/si3nloong/sqlike/sql/codec"
-	"github.com/si3nloong/sqlike/sql/driver"
-	sqlstmt "github.com/si3nloong/sqlike/sql/stmt"
-	"github.com/si3nloong/sqlike/sql/util"
-	"github.com/si3nloong/sqlike/sqlike/actions"
-	"github.com/si3nloong/sqlike/sqlike/indexes"
-	"github.com/si3nloong/sqlike/sqlike/options"
+	"github.com/RevenueMonster/sqlike/reflext"
+	"github.com/RevenueMonster/sqlike/sql"
+	"github.com/RevenueMonster/sqlike/sql/codec"
+	"github.com/RevenueMonster/sqlike/sql/driver"
+	sqlstmt "github.com/RevenueMonster/sqlike/sql/stmt"
+	"github.com/RevenueMonster/sqlike/sql/util"
+	"github.com/RevenueMonster/sqlike/sqlike/actions"
+	"github.com/RevenueMonster/sqlike/sqlike/indexes"
+	"github.com/RevenueMonster/sqlike/sqlike/options"
 )
 
 // SQLDialect :

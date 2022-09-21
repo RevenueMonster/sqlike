@@ -1,7 +1,7 @@
 package mysql
 
 import (
-	sqlstmt "github.com/si3nloong/sqlike/sql/stmt"
+	sqlstmt "github.com/RevenueMonster/sqlike/sql/stmt"
 )
 
 // UseDatabase :

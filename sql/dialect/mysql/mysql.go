@@ -1,11 +1,11 @@
 package mysql
 
 import (
-	"github.com/si3nloong/sqlike/sql/codec"
-	"github.com/si3nloong/sqlike/sql/dialect"
-	"github.com/si3nloong/sqlike/sql/schema"
-	sqlstmt "github.com/si3nloong/sqlike/sql/stmt"
-	sqlutil "github.com/si3nloong/sqlike/sql/util"
+	"github.com/RevenueMonster/sqlike/sql/codec"
+	"github.com/RevenueMonster/sqlike/sql/dialect"
+	"github.com/RevenueMonster/sqlike/sql/schema"
+	sqlstmt "github.com/RevenueMonster/sqlike/sql/stmt"
+	sqlutil "github.com/RevenueMonster/sqlike/sql/util"
 )
 
 // MySQL :

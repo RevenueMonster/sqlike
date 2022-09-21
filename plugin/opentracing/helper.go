@@ -10,10 +10,10 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/RevenueMonster/sqlike/util"
 	"github.com/opentracing/opentracing-go"
 	"github.com/opentracing/opentracing-go/ext"
 	"github.com/opentracing/opentracing-go/log"
-	"github.com/si3nloong/sqlike/util"
 )
 
 var r = regexp.MustCompile(`(\$\d|\?|\:\w+)`)

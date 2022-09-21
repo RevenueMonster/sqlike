@@ -1,9 +1,9 @@
 package mysql
 
 import (
-	sqlstmt "github.com/si3nloong/sqlike/sql/stmt"
-	"github.com/si3nloong/sqlike/sqlike/actions"
-	"github.com/si3nloong/sqlike/sqlike/options"
+	sqlstmt "github.com/RevenueMonster/sqlike/sql/stmt"
+	"github.com/RevenueMonster/sqlike/sqlike/actions"
+	"github.com/RevenueMonster/sqlike/sqlike/options"
 )
 
 // Select :
