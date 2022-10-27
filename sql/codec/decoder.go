@@ -6,12 +6,16 @@ import (
 	"encoding/base64"
 	"encoding/hex"
 	"encoding/json"
+	"fmt"
+	"net/url"
 	"reflect"
 	"regexp"
 	"strconv"
+	"strings"
 	"time"
 
 	"cloud.google.com/go/civil"
+	"cloud.google.com/go/datastore"
 	"github.com/RevenueMonster/sqlike/jsonb"
 	"github.com/paulmach/orb"
 	"github.com/paulmach/orb/encoding/wkb"
@@ -555,4 +559,83 @@ func (dec DefaultDecoders) DecodeMap(it interface{}, v reflect.Value) error {
 		b = vi
 	}
 	return jsonb.UnmarshalValue(b, v)
+}
+
+func (dec DefaultDecoders) DecodeDatastoreKey(it interface{}, v reflect.Value) error {
+	key, err := parseKey(fmt.Sprintf("%s", it))
+	if err != nil {
+		return err
+	}
+
+	v.Set(reflect.ValueOf(key).Elem())
+	return nil
+}
+
+func parseKey(str string) (*datastore.Key, error) {
+	str = strings.Trim(strings.TrimSpace(str), `"`)
+	if str == "" {
+		var k *datastore.Key
+		return k, nil
+	}
+
+	paths := strings.Split(strings.Trim(str, "/"), "/")
+	parentKey := new(datastore.Key)
+	endOfIndex := len(paths) - 1
+	for i, p := range paths {
+		path := strings.Split(p, ",")
+		if len(path) != 2 && i != endOfIndex {
+			return nil, fmt.Errorf("goloquent: incorrect key value: %q, suppose %q", p, "table,value")
+		}
+
+		kind, value := "", ""
+		if len(path) != 2 {
+			kind = ""
+			value = path[0]
+		} else {
+			kind = path[0]
+			value = path[1]
+		}
+
+		key := new(datastore.Key)
+		key.Kind = kind
+		if isNameKey(value) {
+			name, err := url.PathUnescape(strings.Trim(value, `'`))
+			if err != nil {
+				return nil, err
+			}
+			key.Name = name
+		} else {
+			n, err := strconv.ParseInt(value, 10, 64)
+			if err != nil {
+				return nil, fmt.Errorf("goloquent: incorrect key id, %v", value)
+			}
+			key.ID = n
+		}
+
+		if !parentKey.Incomplete() {
+			key.Parent = parentKey
+		}
+		parentKey = key
+	}
+
+	return parentKey, nil
+}
+
+func isNameKey(strKey string) bool {
+	if strKey == "" {
+		return false
+	}
+	if strings.HasPrefix(strKey, "name=") {
+		return true
+	}
+	_, err := strconv.ParseInt(strKey, 10, 64)
+	if err != nil {
+		return true
+	}
+	paths := strings.Split(strKey, "/")
+	if len(paths) != 2 {
+		return strings.HasPrefix(strKey, "'") && strings.HasSuffix(strKey, "'")
+	}
+	lastPath := strings.Split(paths[len(paths)-1], ",")[1]
+	return strings.HasPrefix(lastPath, "'") || strings.HasSuffix(lastPath, "'")
 }
