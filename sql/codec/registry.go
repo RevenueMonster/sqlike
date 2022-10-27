@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"cloud.google.com/go/civil"
+	"cloud.google.com/go/datastore"
 	"github.com/RevenueMonster/sqlike/reflext"
 	"github.com/RevenueMonster/sqlike/spatial"
 	"github.com/paulmach/orb"
@@ -38,6 +39,7 @@ func buildDefaultRegistry() Codecer {
 	rg := NewRegistry()
 	dec := DefaultDecoders{rg}
 	enc := DefaultEncoders{rg}
+
 	rg.RegisterTypeCodec(reflect.TypeOf([]byte{}), enc.EncodeByte, dec.DecodeByte)
 	rg.RegisterTypeCodec(reflect.TypeOf(language.Tag{}), enc.EncodeStringer, dec.DecodeLanguage)
 	rg.RegisterTypeCodec(reflect.TypeOf(currency.Unit{}), enc.EncodeStringer, dec.DecodeCurrency)
@@ -49,10 +51,14 @@ func buildDefaultRegistry() Codecer {
 	rg.RegisterTypeCodec(reflect.TypeOf(json.RawMessage{}), enc.EncodeJSONRaw, dec.DecodeJSONRaw)
 	rg.RegisterTypeCodec(reflect.TypeOf(orb.Point{}), enc.EncodeSpatial(spatial.Point), dec.DecodePoint)
 	rg.RegisterTypeCodec(reflect.TypeOf(orb.LineString{}), enc.EncodeSpatial(spatial.LineString), dec.DecodeLineString)
+	// fallback support goloquent datastore key
+	rg.RegisterTypeCodec(reflect.TypeOf(datastore.Key{}), enc.EncodeDatastoreKey, dec.DecodeDatastoreKey)
+
 	// rg.RegisterTypeCodec(reflect.TypeOf(orb.Polygon{}), enc.EncodeSpatial(spatial.Polygon), dec.DecodePolygon)
 	// rg.RegisterTypeCodec(reflect.TypeOf(orb.MultiPoint{}), enc.EncodeSpatial(spatial.MultiPoint), dec.DecodeMultiPoint)
 	// rg.RegisterTypeCodec(reflect.TypeOf(orb.MultiLineString{}), enc.EncodeSpatial(spatial.MultiLineString), dec.DecodeMultiLineString)
 	// rg.RegisterTypeCodec(reflect.TypeOf(orb.MultiPolygon{}), enc.EncodeSpatial(spatial.MultiPolygon), dec.DecodeMultiPolygon)
+
 	rg.RegisterKindCodec(reflect.String, enc.EncodeString, dec.DecodeString)
 	rg.RegisterKindCodec(reflect.Bool, enc.EncodeBool, dec.DecodeBool)
 	rg.RegisterKindCodec(reflect.Int, enc.EncodeInt, dec.DecodeInt)

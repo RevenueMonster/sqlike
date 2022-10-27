@@ -6,11 +6,13 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
+	"net/url"
 	"reflect"
 	"strconv"
 	"strings"
 	"time"
 
+	"cloud.google.com/go/datastore"
 	"github.com/RevenueMonster/sqlike/reflext"
 	"github.com/RevenueMonster/sqlike/spatial"
 	"github.com/paulmach/orb"
@@ -199,3 +201,43 @@ func (enc DefaultEncoders) EncodeMap(_ reflext.StructFielder, v reflect.Value) (
 // 		}
 // 	}
 // }
+
+func (enc DefaultEncoders) EncodeDatastoreKey(_ reflext.StructFielder, v reflect.Value) (interface{}, error) {
+	key := v.Interface().(datastore.Key)
+	kk, pp := splitKey(&key)
+	return strings.Trim(pp+"/"+kk, "/"), nil
+}
+
+func splitKey(k *datastore.Key) (key string, parent string) {
+	if k == nil {
+		return "", ""
+	}
+	if k.ID > 0 {
+		return strconv.FormatInt(k.ID, 10), stringifyKey(k.Parent)
+	}
+	name := url.PathEscape(k.Name)
+	return "'" + name + "'", stringifyKey(k.Parent)
+}
+
+func stringifyKey(key *datastore.Key) string {
+	paths := make([]string, 0)
+	parentKey := key
+
+	for parentKey != nil {
+		var k string
+		if parentKey.Name != "" {
+			name := url.PathEscape(parentKey.Name)
+			k = parentKey.Kind + ",'" + name + "'"
+		} else {
+			k = parentKey.Kind + "," + strconv.FormatInt(parentKey.ID, 10)
+		}
+		paths = append([]string{k}, paths...)
+		parentKey = parentKey.Parent
+	}
+
+	if len(paths) > 0 {
+		return strings.Join(paths, "/")
+	}
+
+	return ""
+}
