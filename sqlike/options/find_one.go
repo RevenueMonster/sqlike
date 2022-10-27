@@ -27,3 +27,9 @@ func (opt *FindOneOptions) SetLockMode(lock LockMode) *FindOneOptions {
 	opt.LockMode = lock
 	return opt
 }
+
+// SetNoResolution :
+func (opt *FindOneOptions) SetNoResolution(noResolution bool) *FindOneOptions {
+	opt.NoResolution = noResolution
+	return opt
+}

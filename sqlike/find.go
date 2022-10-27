@@ -12,6 +12,7 @@ import (
 	"github.com/RevenueMonster/sqlike/sqlike/actions"
 	"github.com/RevenueMonster/sqlike/sqlike/logs"
 	"github.com/RevenueMonster/sqlike/sqlike/options"
+	"github.com/RevenueMonster/sqlike/sqlike/primitive"
 )
 
 // SingleResult : single result is an interface implementing apis as similar as driver.Result
@@ -97,6 +98,18 @@ func find(ctx context.Context, dbName, tbName string, cache reflext.StructMapper
 	if act.Table == "" {
 		act.Table = tbName
 	}
+
+	groups := extractResolution(ctx)
+	if len(groups) > 0 {
+		if len(act.Conditions.Values) > 0 {
+			act.Conditions.Values = append(act.Conditions.Values, primitive.And)
+		}
+
+		for _, group := range groups {
+			act.Conditions.Values = append(act.Conditions.Values, group.Values...)
+		}
+	}
+
 	rslt := new(Result)
 	rslt.cache = cache
 	rslt.codec = cdc

@@ -2,10 +2,11 @@ package options
 
 // FindOptions :
 type FindOptions struct {
-	OmitFields []string
-	NoLimit    bool
-	LockMode   LockMode
-	Debug      bool
+	OmitFields   []string
+	NoLimit      bool
+	LockMode     LockMode
+	Debug        bool
+	NoResolution bool
 }
 
 // Find :
@@ -34,5 +35,11 @@ func (opt *FindOptions) SetOmitFields(fields ...string) *FindOptions {
 // SetLockMode :
 func (opt *FindOptions) SetLockMode(lock LockMode) *FindOptions {
 	opt.LockMode = lock
+	return opt
+}
+
+// SetNoResolution :
+func (opt *FindOptions) SetNoResolution(noResolution bool) *FindOptions {
+	opt.NoResolution = noResolution
 	return opt
 }
