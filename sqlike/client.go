@@ -171,9 +171,7 @@ func (c *Client) Database(name string, connections ...*options.ConnectOptions) *
 			panic(err)
 		}
 
-		if _, err := driver.Execute(context.Background(), db, stmt, c.logger); err != nil {
-			panic(err)
-		}
+		driver.Execute(context.Background(), db, stmt, c.logger)
 		replicas[idx+1] = db
 	}
 
