@@ -13,6 +13,8 @@ import (
 	"github.com/RevenueMonster/sqlike/sql/driver"
 	sqlstmt "github.com/RevenueMonster/sqlike/sql/stmt"
 	"github.com/RevenueMonster/sqlike/sqlike/logs"
+	"github.com/RevenueMonster/sqlike/sqlike/options"
+	"github.com/bxcodec/dbresolver"
 )
 
 // DriverInfo :
@@ -137,23 +139,54 @@ func (c *Client) ListDatabases(ctx context.Context) ([]string, error) {
 }
 
 // Database : this api will execute `USE database`, which will point your current connection to selected database
-func (c *Client) Database(name string) *Database {
+func (c *Client) Database(name string, connections ...*options.ConnectOptions) *Database {
 	stmt := sqlstmt.AcquireStmt(c.dialect)
 	defer sqlstmt.ReleaseStmt(stmt)
 	c.dialect.UseDatabase(stmt, name)
 	if _, err := driver.Execute(context.Background(), c.DB, stmt, c.logger); err != nil {
 		panic(err)
 	}
+
+	if len(connections) == 0 {
+		return &Database{
+			driverName: c.driverName,
+			name:       name,
+			pk:         c.pk,
+			client:     c,
+			dialect:    c.dialect,
+			driver:     c.DB,
+			logger:     c.logger,
+			codec:      c.codec,
+		}
+	}
+
+	replicas := make([]*sql.DB, len(connections)+1)
+	replicas[0] = c.DB
+
+	dialect := dialect.GetDialectByDriver(c.driverName)
+	for idx, connection := range connections {
+		connStr := dialect.Connect(connection)
+		db, err := sql.Open(c.driverName, connStr)
+		if err != nil {
+			panic(err)
+		}
+
+		driver.Execute(context.Background(), db, stmt, c.logger)
+		replicas[idx+1] = db
+	}
+
+	resolver := dbresolver.WrapDBs(replicas...)
 	return &Database{
 		driverName: c.driverName,
 		name:       name,
 		pk:         c.pk,
 		client:     c,
 		dialect:    c.dialect,
-		driver:     c.DB,
+		driver:     resolver,
 		logger:     c.logger,
 		codec:      c.codec,
 	}
+
 }
 
 // getVersion is a internal function to get sql driver's version

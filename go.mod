@@ -7,6 +7,7 @@ require (
 	cloud.google.com/go/datastore v1.1.0
 	github.com/Masterminds/semver/v3 v3.1.1
 	github.com/brianvoe/gofakeit v3.18.0+incompatible
+	github.com/bxcodec/dbresolver v1.1.0
 	github.com/casbin/casbin/v2 v2.51.0
 	github.com/go-sql-driver/mysql v1.6.0
 	github.com/google/uuid v1.3.0
