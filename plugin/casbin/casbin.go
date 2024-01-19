@@ -229,7 +229,8 @@ func loadPolicy(policy *Policy, m model.Model) {
 	key := tokens[0]
 	sec := key[:1]
 	m[sec][key].Policy = append(m[sec][key].Policy, tokens[1:])
-	m[sec][key].PolicyMap[strings.Join(tokens[1:], model.DefaultSep)] = len(m[sec][key].Policy) - 1
+	len := len(m[sec][key].Policy)
+	m[sec][key].PolicyMap[strings.Join(tokens[1:], model.DefaultSep)] = len - 1
 }
 
 func toPolicy(ptype string, rules []string) *Policy {
