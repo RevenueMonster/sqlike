@@ -178,6 +178,10 @@ type indexDefinition struct {
 			Name      string `yaml:"name"`
 			Direction string `yaml:"direction"`
 		} `yaml:"columns"`
+		Column []struct {
+			Name      string `yaml:"name"`
+			Direction string `yaml:"direction"`
+		} `yaml:"column"`
 	} `yaml:"indexes"`
 }
 
@@ -287,6 +291,50 @@ func (db *Database) readAndBuildIndexes(ctx context.Context, path string) error 
 		iv := db.Table(idx.Table).Indexes()
 		if err := iv.CreateOne(ctx, index); err != nil {
 			return err
+		}
+
+		// Single indexes
+		for _, index := range idx.Column {
+			direction := indexes.Ascending
+			index.Direction = strings.TrimSpace(strings.ToLower(index.Direction))
+			if index.Direction == "desc" || index.Direction == "descending" {
+				direction = indexes.Descending
+			}
+
+			column := []indexes.Col{
+				{
+					Name:      index.Name,
+					Direction: direction,
+				},
+			}
+
+			singleIndex := indexes.Index{
+				Name:    strings.TrimSpace(index.Name),
+				Type:    parseIndexType(idx.Type),
+				Cast:    strings.TrimSpace(idx.Cast),
+				As:      strings.TrimSpace(idx.As),
+				Columns: column,
+				Comment: strings.TrimSpace(idx.Comment),
+			}
+
+			if exists, err := isIndexExists(
+				ctx,
+				db.name,
+				idx.Table,
+				singleIndex.GetName(),
+				db.driver,
+				db.dialect,
+				db.logger,
+			); err != nil {
+				return err
+			} else if exists {
+				continue
+			}
+
+			iv := db.Table(idx.Table).Indexes()
+			if err := iv.CreateOne(ctx, singleIndex); err != nil {
+				return err
+			}
 		}
 	}
 	return nil
