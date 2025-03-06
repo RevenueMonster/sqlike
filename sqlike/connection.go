@@ -5,7 +5,6 @@ import (
 	"database/sql"
 	"database/sql/driver"
 	"errors"
-	"log"
 
 	"github.com/RevenueMonster/sqlike/sql/dialect"
 	sqldialect "github.com/RevenueMonster/sqlike/sql/dialect"
@@ -25,7 +24,6 @@ func Open(ctx context.Context, driver string, opt *options.ConnectOptions) (clie
 	var db *sql.DB
 	dialect := sqldialect.GetDialectByDriver(driver)
 	connStr := dialect.Connect(opt)
-	log.Println("Connecting to :", connStr)
 	db, err = sql.Open(driver, connStr)
 	if err != nil {
 		return
